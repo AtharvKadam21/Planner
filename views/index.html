@@ -11,18 +11,6 @@
         <button type="submit">Add to Daily Tasks</button>
         <button type="button">Add to Work Tasks</button>
     </form>
-
-    <div class="task-list" id="dailytask">
-        <% if (locals.flag === 1){%>
-            <ul>
-                <% for(let i=0; i<list.length; i++) {%>
-                    <li><%= list[i] %></li>
-                <% } %>
-            </ul>
-        <%}%>
-    </div>
-    <div class="task-list" id="worktask">
-
     </div>
 </body>
 </html>
