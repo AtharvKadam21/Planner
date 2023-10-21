@@ -15,12 +15,18 @@ app.get("/", (req, res) => {
 app.post("/submit", (req, res) => {
     entryCheck = 1;
     let taskEntry = req.body["task"];
-    taskList.push(taskEntry);
-    res.render("index.ejs", {list: taskList, flag: entryCheck});
-})
+    if (req.body["dailyTask"]==="dailyTask"){
+        dailyList.push(taskEntry);
+    } else if(req.body["workTask"]==="workTask"){
+        workList.push(taskEntry);
+    }    
+    res.render("index.ejs", {list1: dailyList, list2: workList, flag: entryCheck});
+});
+
 
 app.listen(port, () => {
     console.log(`Port ${port} active`);
 });
 
-var taskList = [];
+var dailyList = [];
+var workList = [];

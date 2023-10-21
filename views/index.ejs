@@ -8,21 +8,32 @@
 <body>
     <form action="/submit" method="post">
         <textarea name="task" id="task" cols="30" rows="10">Write your task here</textarea><br>
-        <button type="submit">Add to Daily Tasks</button>
-        <button type="button">Add to Work Tasks</button>
+        <input type="checkbox" id="dailyTask" name="dailyTask" value="dailyTask">
+        <label for="dailyTask">Daily Task</label><br>
+        <input type="checkbox" id="workTask" name="workTask" value="workTask">
+        <label for="workTask">Work Task</label><br>
+        <button type="submit">Add</button>
     </form>
 
-    <div class="task-list" id="dailytask">
+    <div class="task-list" id="daily-list">
+        <h1>Daily List</h1>
         <% if (locals.flag === 1){%>
             <ul>
-                <% for(let i=0; i<list.length; i++) {%>
-                    <li><%= list[i] %></li>
+                <% for(let i=0; i<list1.length; i++) {%>
+                    <li><%= list1[i] %></li>
                 <% } %>
             </ul>
         <%}%>
     </div>
-    <div class="task-list" id="worktask">
-
+    <div class="task-list" id="work-list">
+        <h1>Work List</h1>
+        <% if (locals.flag === 1){%>
+            <ul>
+                <% for(let i=0; i<list2.length; i++) {%>
+                    <li><%= list2[i] %></li>
+                <% } %>
+            </ul>
+        <%}%>
     </div>
 </body>
 </html>
