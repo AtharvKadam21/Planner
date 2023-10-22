@@ -1,10 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles/main.css">
+
     <title>To-Do list</title>
 </head>
+
 <body>
     <form action="/submit" method="post">
         <textarea name="task" id="task" cols="30" rows="10">Write your task here</textarea><br>
@@ -17,23 +21,29 @@
 
     <div class="task-list" id="daily-list">
         <h1>Daily List</h1>
-        <% if (locals.flag === 1){%>
-            <ul>
-                <% for(let i=0; i<list1.length; i++) {%>
-                    <li><%= list1[i] %></li>
-                <% } %>
-            </ul>
+        <% if (locals.flag===1){%>
+                <ul>
+                    <% for(let i=0; i<list1.length; i++) {%>
+                        <% var dailyItem="daily-item-" +i %>
+                            <input type="checkbox" id=<%=dailyItem%> name=<%=dailyItem%> value=<%=dailyItem%>>
+                                    <label for=<%=dailyItem%>><%=list1[i].name%></label><br>
+                                    <% } %>
+                </ul>
         <%}%>
     </div>
+
     <div class="task-list" id="work-list">
         <h1>Work List</h1>
-        <% if (locals.flag === 1){%>
-            <ul>
-                <% for(let i=0; i<list2.length; i++) {%>
-                    <li><%= list2[i] %></li>
-                <% } %>
-            </ul>
+        <% if (locals.flag===1){%>
+                <ul>
+                    <% for(let i=0; i<list2.length; i++) {%>
+                        <% var workItem="work-item-" +i %>
+                            <input type="checkbox" id=<%=workItem%> name=<%=workItem%> value=<%=workItem%>>
+                                    <label for=<%=workItem%>><%=list2[i].name%></label><br>
+                                    <% } %>
+                </ul>
         <%}%>
     </div>
 </body>
+
 </html>
