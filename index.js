@@ -8,7 +8,7 @@ const port = 3000;
 app.use(express.static("public"));
 app.use(bodyparser.urlencoded({extended: true}));
 
-mongoose.connect('mongodb://127.0.0.1:27017/plannerDB')
+mongoose.connect('mongodb+srv://admin-atharv:test123@cluster0.amkmybd.mongodb.net/plannerDB')
   .then(() => console.log('Connected!'));
 
 const Schema = mongoose.Schema;
@@ -53,8 +53,20 @@ app.post("/submit", (req, res) => {
         name: itemName
     });
     item.save();
-
     res.redirect("/");
+});
+
+app.post("/delete", (req, res) => {
+    const checkedItem = req.body.checkbox;
+    console.log(checkedItem);
+
+    Item.findByIdAndRemove(checkedItem)
+    .then(() => {
+        res.redirect("/");
+    })
+    .catch(err => {
+        console.log(err);
+    })
 });
 
 app.listen(port, () => {
