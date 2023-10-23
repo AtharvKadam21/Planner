@@ -12,37 +12,17 @@
 <body>
     <form action="/submit" method="post">
         <textarea name="task" id="task" cols="30" rows="10">Write your task here</textarea><br>
-        <input type="checkbox" id="dailyTask" name="dailyTask" value="dailyTask">
-        <label for="dailyTask">Daily Task</label><br>
-        <input type="checkbox" id="workTask" name="workTask" value="workTask">
-        <label for="workTask">Work Task</label><br>
         <button type="submit">Add</button>
     </form>
 
-    <div class="task-list" id="daily-list">
-        <h1>Daily List</h1>
-        <% if (locals.flag===1){%>
-                <ul>
-                    <% for(let i=0; i<list1.length; i++) {%>
-                        <% var dailyItem="daily-item-" +i %>
-                            <input type="checkbox" id=<%=dailyItem%> name=<%=dailyItem%> value=<%=dailyItem%>>
-                                    <label for=<%=dailyItem%>><%=list1[i].name%></label><br>
-                                    <% } %>
-                </ul>
-        <%}%>
-    </div>
-
-    <div class="task-list" id="work-list">
-        <h1>Work List</h1>
-        <% if (locals.flag===1){%>
-                <ul>
-                    <% for(let i=0; i<list2.length; i++) {%>
-                        <% var workItem="work-item-" +i %>
-                            <input type="checkbox" id=<%=workItem%> name=<%=workItem%> value=<%=workItem%>>
-                                    <label for=<%=workItem%>><%=list2[i].name%></label><br>
-                                    <% } %>
-                </ul>
-        <%}%>
+    <div class="task-list">
+        <h1>Tasks</h1>
+        <% list1.forEach(function(item){ %>
+            <div class="item">
+                <input type="checkbox">
+                <p><%=item.name%></p>
+            </div>
+        <% }) %>
     </div>
 </body>
 
